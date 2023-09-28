@@ -8,6 +8,6 @@ The core philosophy of this browser is _Keyboard-driven Minimalism._ This browse
 This browser should be launched from the terminal. When launching the browser, the user can specify arguments. The list of acceptable arguments can be found below.
 | Argument        | Short Name | Function                                                                              |
 | --------------- |:----------:| -------------------------------------------------------------------------------------:|
-| --url <url>     | -u         | Launches the specified URL in the browser.                                            |
-| --query <query> | -q         | Searches for the specified query on the specified search engine [default: duckduckgo] |
+| --url URL       | -u         | Launches the specified URL in the browser.                                            |
+| --query QUERY   | -q         | Searches for the specified query on the specified search engine [default: duckduckgo] |
 | --dark_mode     | -dm        | Forces Dark Mode on all websites.                                                     |                                                                                                                                                        
