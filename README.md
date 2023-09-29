@@ -16,3 +16,18 @@ This browser should be launched from the terminal. When launching the browser, t
 | --windowed    | -w         | Runs the browser in Windowed mode, rather than in fullscreen.                         |
 | --tabbed      | -t         | Adds the ability to add tabs. [EXPERIMENTAL!]                                         |
 | --incognito   | -i         | Makes the browser launch a clear profile.                                             |
+
+## Shortcuts
+This browser uses keyboard shortcuts to control the program. The default modifier key is "win" (Windows Key). As such, this list is for a shortcut of win+key.
+| Key         | Function                                                                                              |
+| ----------- |:-----------------------------------------------------------------------------------------------------:|
+| J           | Makes the browser go back one page.                                                                   |
+| X           | Closes the browser.                                                                                   |
+| R           | Goes back to the search engine page.                                                                  |
+| Left Arrow  | If tabbed is set to True, this shortcut makes the browser go to a previous tab.                       |
+| Right Arrow | If tabbed is set to True, this shortcut makes the browser go to the next tab.                         |
+| T           | if tabbed is set to True, this shortcut creates a tab which adds the current website to the tab list. |
+| Y           | if tabbed is set to True, this shortcut clears the tab list.                                          |
+
+## Compile your own PyQt5 or expect hell!
+_Well, the term hell isn't really spot on,_ however if you dont compile your own PyQt5 Webengine, you can expect that videos will not play on websites. A guide on how to do so can be found [here](https://doc.bccnsoft.com/docs/PyQt5/installation.html). Compiling PyQT5 on Windows is a nightmare of itself, yet you need to do it for the sake of video playback.
