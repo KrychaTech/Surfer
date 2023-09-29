@@ -8,7 +8,7 @@ websites that destroy a workflow.<br />
 ## Arguments
 This browser should be launched from the terminal. When launching the browser, the user can specify arguments. The list of acceptable arguments can be found below.
 | Argument      | Short Name | Function                                                                              |
-| ------------- |:----------:| -------------------------------------------------------------------------------------:|
+| ------------- |------------| --------------------------------------------------------------------------------------|
 | --url URL     | -u         | Launches the specified URL in the browser.                                            |
 | --query QUERY | -q         | Searches for the specified query on the specified search engine [default: duckduckgo] |
 | --dark_mode   | -dm        | Forces Dark Mode on all websites.                                                     |
@@ -20,7 +20,7 @@ This browser should be launched from the terminal. When launching the browser, t
 ## Shortcuts
 This browser uses keyboard shortcuts to control the program. The default modifier key is "win" (Windows Key). As such, this list is for a shortcut of win+key.
 | Key         | Function                                                                                              |
-| ----------- |:-----------------------------------------------------------------------------------------------------:|
+| ----------- |-------------------------------------------------------------------------------------------------------|
 | J           | Makes the browser go back one page.                                                                   |
 | X           | Closes the browser.                                                                                   |
 | R           | Goes back to the search engine page.                                                                  |
