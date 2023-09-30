@@ -28,6 +28,7 @@ This browser uses keyboard shortcuts to control the program. The default modifie
 | Right Arrow | If tabbed is set to True, this shortcut makes the browser go to the next tab.                         |
 | T           | if tabbed is set to True, this shortcut creates a tab which adds the current website to the tab list. |
 | Y           | if tabbed is set to True, this shortcut clears the tab list.                                          |
+| U           | Copies the current URL into the clipboard.                                                            |
 
 Since release v1.1.0 this shortcuts can be customized by editing config.ini.
 
