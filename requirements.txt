@@ -2,3 +2,4 @@ keyboard==0.13.5
 PyQt5==5.15.9
 PyQt5_sip==12.12.2
 PyQtWebEngine==5.15.6
+pyperclip==1.8.2

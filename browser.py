@@ -6,6 +6,12 @@ import sys
 import random
 import argparse
 import keyboard
+import configparser
+import pyperclip
+
+config = configparser.ConfigParser()
+config.read("config.ini")
+shortcut = config['hotkeys']
 
 # Define arguments. More can be found on the GitHub page.
 
@@ -19,21 +25,16 @@ parser.add_argument("-t", "--tabbed", action="store_true")
 parser.add_argument("-i", "--incognito", action="store_true")
 args = parser.parse_args()
 
-class Back_Action(QObject):
+class KeyboardHandler(QObject):
     back_signal = pyqtSignal()
-    def start(self):
-        keyboard.add_hotkey("win+j", self.back_signal.emit, suppress=True)
-
-class Exit_Action(QObject):
     exit_signal = pyqtSignal()
-    def start(self):
-        keyboard.add_hotkey("win+x", self.exit_signal.emit, suppress=True) 
-
-class Search_Action(QObject):
     search_signal = pyqtSignal()
+    copy_url = pyqtSignal()
     def start(self):
-        keyboard.add_hotkey("win+r", self.search_signal.emit, suppress=True)
-
+        keyboard.add_hotkey(f"{shortcut['control_key']}+{shortcut['back_key']}", self.back_signal.emit, suppress=True)
+        keyboard.add_hotkey(f"{shortcut['control_key']}+{shortcut['exit_key']}", self.exit_signal.emit, suppress=True) 
+        keyboard.add_hotkey(f"{shortcut['control_key']}+{shortcut['return_to_search']}", self.search_signal.emit, suppress=True)
+        keyboard.add_hotkey(f"{shortcut['control_key']}+{shortcut['copy_url']}", self.copy_url.emit, suppress=True)
 
 class Tabs(QObject):
     tab_left = pyqtSignal()
@@ -41,13 +42,12 @@ class Tabs(QObject):
     new_tab_signal = pyqtSignal()
     clear_tab_signal = pyqtSignal()
     def start(self):
-        keyboard.add_hotkey("win+left", self.tab_left.emit, suppress=True)
-        keyboard.add_hotkey("win+right", self.tab_right.emit, suppress=True)
-        keyboard.add_hotkey("win+t",  self.new_tab_signal.emit, suppress=True)
-        keyboard.add_hotkey("win+y", self.clear_tab_signal.emit, suppress=True)
+        keyboard.add_hotkey(f"{shortcut['control_key']}+{shortcut['previous_tab']}", self.tab_left.emit, suppress=True)
+        keyboard.add_hotkey(f"{shortcut['control_key']}+{shortcut['next_tab']}", self.tab_right.emit, suppress=True)
+        keyboard.add_hotkey(f"{shortcut['control_key']}+{shortcut['new_tab']}",  self.new_tab_signal.emit, suppress=True)
+        keyboard.add_hotkey(f"{shortcut['control_key']}+{shortcut['reset_tabs']}", self.clear_tab_signal.emit, suppress=True)
 
-
-# THERE CERTAINLY IS NOT OTHER POSSIBLE METHOD TO WRITE THIS
+# Updated handling of keyboard. Removed unneccessary classes.
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -128,19 +128,17 @@ class MainWindow(QMainWindow):
             else:
                 self.browser.setUrl(QUrl("https:/www.duckduckgo.com"))
 
+        def copy_url():
+                pyperclip.copy(self.browser.url().toString())
 
         # define shortcuts - win+j for back, win+x for exit, win+r for returning to ddg or google
-        back = Back_Action(self)
-        back.back_signal.connect(self.browser.back)
-        back.start()
+        keyboard_manager = KeyboardHandler(self)
+        keyboard_manager.back_signal.connect(self.browser.back)
+        keyboard_manager.exit_signal.connect(app.quit)
+        keyboard_manager.search_signal.connect(return_to_search)
+        keyboard_manager.copy_url.connect(copy_url)
+        keyboard_manager.start()
 
-        leave = Exit_Action(self)
-        leave.exit_signal.connect(app.quit)
-        leave.start()
-
-        search = Search_Action(self)
-        search.search_signal.connect(return_to_search)
-        search.start()
 
         tab_manager = Tabs(self)
         tab_manager.tab_left.connect(move_tab_left)
