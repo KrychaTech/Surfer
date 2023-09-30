@@ -29,6 +29,8 @@ This browser uses keyboard shortcuts to control the program. The default modifie
 | T           | if tabbed is set to True, this shortcut creates a tab which adds the current website to the tab list. |
 | Y           | if tabbed is set to True, this shortcut clears the tab list.                                          |
 
+Since release v1.1.0 this shortcuts can be customized by editing config.ini.
+
 ## Compile your own PyQt5 or expect hell!
 _Well, the term hell isn't really spot on,_ however if you dont compile your own PyQt5 Webengine, you can expect that videos will not play on websites. A guide on how to do so can be found [here](https://doc.bccnsoft.com/docs/PyQt5/installation.html). Compiling PyQT5 on Windows is a nightmare of itself, yet you need to do it for the sake of video playback.
 
